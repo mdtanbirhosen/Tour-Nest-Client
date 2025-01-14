@@ -1,5 +1,5 @@
 
-const Community = () => {
+const AdminRoutes = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const Community = () => {
     );
 };
 
-export default Community;
+export default AdminRoutes;

@@ -2,10 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import GoogleSignIn from "../../components/GoogleSignIn/GoogleSignIn";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,8 +34,18 @@ const Register = () => {
       // Register user
       createUser(email, password).then((res) => {
         console.log(res);
-        updateUserProfile(name).then(() => {
-          toast.success("Registration successful!");
+        updateUserProfile(name)
+        .then(() => {
+          const userInfo = {
+            email: res.user?.email,
+            name: res.user?.displayName
+          }
+          axiosPublic.post('/users',userInfo)
+          .then(res=>{
+            console.log(res.data)
+            toast.success("Registration successful!");
+            navigate(location?.state ? location.state : "/");
+          })
         });
       });
 

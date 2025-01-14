@@ -2,16 +2,28 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const GoogleSignIn = () => {
     const Navigate = useNavigate()
     const {loginUserWithGoogle} = useAuth()
+    const axiosPublic= useAxiosPublic()
     const handleSigninWithGoogle = () => {
         loginUserWithGoogle()
           .then((result) => {
             console.log(result);
-            // toast.success("Login Successfully.");
-            Navigate(location?.state ? location.state : "/");
+            const userInfo = {
+              email: result.user?.email,
+              name: result.user?.displayName,
+              photoURL: result.user?.photoURL,
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res=>{
+              console.log(res.data)
+              toast.success("Login Successfully.");
+              Navigate(location?.state ? location.state : "/");
+            })
           })
           .catch((error) => {
             // toast.error(error.message);

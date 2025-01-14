@@ -1,37 +1,47 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-
+import Button from "../Button/Button";
+import logo from "../../assets/logo.png";
 const Navbar = () => {
-  const {user} = useAuth()
+  const { user, logOut } = useAuth();
   const links = (
     <>
       <li>
-        <Link to={'/'}>Home</Link>
+        <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <Link to={'/trips'}>Trips</Link>
+        <Link to={"/trips"}>Trips</Link>
       </li>
       <li>
-        <Link to={'/community'}>Community</Link>
+        <Link to={"/community"}>Community</Link>
       </li>
       <li>
-        <Link to={'/aboutUs'}>About Us</Link>
+        <Link to={"/aboutUs"}>About Us</Link>
       </li>
     </>
   );
   const profileLinks = (
     <>
-      <li>
-        <div className="flex flex-col">
+      {user && (
+        <li>
+          <div className="flex flex-col">
             <p className="font-semibold text-lg">{user?.displayName}</p>
             <p className="text-xs">{user?.email}</p>
-        </div>
+          </div>
+        </li>
+      )}
+      <hr className="my-2" />
+      <li>
+        <Link to={"/dashboard"}>Dashboard</Link>
       </li>
       <li>
-        <Link to={'/dashboard'}>Dashboard</Link>
-      </li>
-      <li>
-        <a>Logout</a>
+        {user ? (
+          <button onClick={logOut}>logout</button>
+        ) : (
+          <Link to={"/login"}>
+            <button>login</button>
+          </Link>
+        )}
       </li>
     </>
   );
@@ -63,13 +73,23 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className=" font-semibold text-xl">TOUR NEST</a>
+        <div className="flex gap-1 items-center">
+          <img src={logo} className="h-[40px]" alt="" />
+          <a className=" font-semibold text-xl">TOUR NEST</a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <Button text="logout" onClick={logOut}></Button>
+        ) : (
+          <Link to={"/login"}>
+            <Button text="login"></Button>
+          </Link>
+        )}
+
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
