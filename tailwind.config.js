@@ -8,7 +8,9 @@ export default {
     extend: {
       colors:{
         'primary-color':'#1F4529',
-        'bg-color':'#E8ECD7',
+        'secondary-color':'#47663B',
+        'basic-bg':'#E8ECD7',
+        'dashboard-bg':'#EED3B1',
       }
     },
   },

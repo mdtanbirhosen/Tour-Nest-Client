@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
@@ -5,16 +6,16 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <a>Home</a>
+        <Link to={'/'}>Home</Link>
       </li>
       <li>
-        <a>community</a>
+        <Link to={'/trips'}>Trips</Link>
       </li>
       <li>
-        <a>About Us</a>
+        <Link to={'/community'}>Community</Link>
       </li>
       <li>
-        <a>Trips</a>
+        <Link to={'/aboutUs'}>About Us</Link>
       </li>
     </>
   );
@@ -27,7 +28,7 @@ const Navbar = () => {
         </div>
       </li>
       <li>
-        <a>Dashboard</a>
+        <Link to={'/dashboard'}>Dashboard</Link>
       </li>
       <li>
         <a>Logout</a>
