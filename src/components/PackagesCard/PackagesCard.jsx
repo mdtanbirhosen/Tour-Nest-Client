@@ -1,21 +1,33 @@
-const PackagesCard = () => {
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import Button from "../Button/Button";
+
+const PackagesCard = ({randomPackage}) => {
+    
+    const {_id,name, price, tourType ,images} = randomPackage;
+    // console.log(randomPackage)
   return (
-    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+    <div className="card card-compact bg-base-100  shadow-xl">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src={images[0]}
+          className="w-full h-[200px] md:h-[250px] object-cover"
           alt="Shoes"
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Shoes!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+        <h2 className="card-title">{name}</h2>
+        <p><strong>Tour Type:</strong> {tourType}</p>
+        <p><strong>Price:</strong> {price}</p>
+        <div className="card-actions ">
+          <Link to={`/packageDetails/${_id}`}><Button text="View Details"></Button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
-
+PackagesCard.propTypes ={
+    randomPackage: PropTypes.object.isRequired,
+}
 export default PackagesCard;

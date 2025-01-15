@@ -13,7 +13,7 @@ const BasicLayout = () => {
           pathname ==='/' && <Banner></Banner>
         }
       </header>
-      <main className="max-w-screen-2xl mx-auto min-h-[calc(100vh-200px)] ">
+      <main className="max-w-screen-2xl mx-auto min-h-[calc(100vh-200px)] px-2 md:px-5">
         <Outlet></Outlet>
       </main>
       <footer>

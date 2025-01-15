@@ -17,6 +17,15 @@ const Drawer = () => {
       <li>
         <Link to={"/"}>Home</Link>
       </li>
+      <li>
+        <Link to={"/trips"}>Trips</Link>
+      </li>
+      <li>
+        <Link to={"/community"}>Community</Link>
+      </li>
+      <li>
+        <Link to={"/aboutUs"}>About Us</Link>
+      </li>
     </>
   );
   return (

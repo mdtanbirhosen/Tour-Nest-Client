@@ -15,6 +15,7 @@ import ManageUsers from "../pages/Dashboard/AdminDashboard/ManageUsers/ManageUse
 import ManageCandidates from "../pages/Dashboard/AdminDashboard/ManageCandidates/ManageCandidates";
 import AboutUs from "../pages/BasicLayout/AboutUs/AboutUs";
 import Trips from "../pages/BasicLayout/Trips/Trips";
+import PackageDetails from "../pages/BasicLayout/PackageDetails/PackageDetails";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             path: '/community',
             element:<Community></Community>
           },
+          {
+            path:'/packageDetails/:id',
+            element:<PackageDetails></PackageDetails>
+          }
           
         ],
       },
