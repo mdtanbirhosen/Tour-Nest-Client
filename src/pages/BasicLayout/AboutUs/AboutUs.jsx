@@ -6,6 +6,9 @@ const AboutUs = () => {
       <Helmet>
         <title>About US || TOUR NEST</title>
       </Helmet>
+      <div>
+        this is about us
+      </div>
     </div>
   );
 };

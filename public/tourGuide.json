@@ -1,0 +1,152 @@
+[
+    {
+      
+      "name": "John Doe",
+      "email": "tourguid1.com",
+      "image": "https://www.checkfront.com/wp-content/uploads/2022/06/tour-guide-rules.jpg",
+      "bio": "Expert in historical tours.",
+      "experience": "7 years in tourism",
+      "ratings": 4.7,
+      "available": true
+    },
+    {
+      
+      "name": "Jane Smith",
+      "email": "tourguid2.com",
+      "image": "https://t4.ftcdn.net/jpg/01/14/63/05/360_F_114630530_wgchcsvQKc4JVayxGPJ6ISKZwWVq5zmr.jpg",
+      "bio": "Specialist in adventure tours.",
+      "experience": "5 years in tourism",
+      "ratings": 4.8,
+      "available": false
+    },
+    {
+      
+      "name": "Ahmed Khan",
+      "email": "tourguid3.com",
+      "image": "https://www.shutterstock.com/image-photo/man-city-tourist-map-destination-260nw-2432330355.jpg",
+      "bio": "Cultural tours expert.",
+      "experience": "6 years in tourism",
+      "ratings": 4.6,
+      "available": true
+    },
+    {
+      
+      "name": "Emily Brown",
+      "email": "tourguid4.com",
+      "image": "https://kaist455.com/wp-content/uploads/2023/10/atourguide01.jpg?w=720",
+      "bio": "Loves nature and wildlife tours.",
+      "experience": "8 years in tourism",
+      "ratings": 4.9,
+      "available": true
+    },
+    {
+      
+      "name": "Michael Lee",
+      "email": "tourguid5.com",
+      "image": "https://w7.pngwing.com/pngs/418/345/png-transparent-tourism-hiking-travel-hotel-tour-guide-travel-backpack-flight-arm-thumbnail.png",
+      "bio": "City tours enthusiast.",
+      "experience": "4 years in tourism",
+      "ratings": 4.4,
+      "available": false
+    },
+    {
+      
+      "name": "Sofia Martinez",
+      "email": "tourguid6.com",
+      "image": "https://www.tourradar.com/days-to-come/wp-content/uploads/2016/06/20160619_192515.png",
+      "bio": "Specializes in food tours.",
+      "experience": "3 years in tourism",
+      "ratings": 4.3,
+      "available": true
+    },
+    {
+      
+      "name": "Rajesh Gupta",
+      "email": "tourguid7.com",
+      "image": "https://arival.travel/wp-content/uploads/2024/04/pexels-coworking-bansko-1200x800-1-1024x682.jpg",
+      "bio": "Heritage tour guide.",
+      "experience": "9 years in tourism",
+      "ratings": 4.7,
+      "available": true
+    },
+    {
+      
+      "name": "Anna Ivanova",
+      "email": "tourguid8.com",
+      "image": "https://media.istockphoto.com/id/871168786/photo/woman-traveler-with-backpack-checks-map-to-find-directions-in-wilderness-area-real-explorer.jpg?s=612x612&w=0&k=20&c=X38FSsUMVSzakr2Rcm9Fi3dbGtpEc7ibAkLkK1DwWvI=",
+      "bio": "Mountain and hiking tours expert.",
+      "experience": "5 years in tourism",
+      "ratings": 4.6,
+      "available": false
+    },
+    {
+      
+      "name": "Chen Wei",
+      "email": "tourguid9.com",
+      "image": "https://campcanaan.org/wp-content/uploads/2024/09/canaan-zipline-canopy-tour-guide.jpg",
+      "bio": "Loves guiding in urban areas.",
+      "experience": "10 years in tourism",
+      "ratings": 4.8,
+      "available": true
+    },
+    {
+      
+      "name": "Aisha Mohamed",
+      "email": "tourguid10.com",
+      "image": "https://www.shutterstock.com/image-photo/travel-education-teacher-students-on-260nw-2194218399.jpg",
+      "bio": "Expert in desert tours.",
+      "experience": "6 years in tourism",
+      "ratings": 4.5,
+      "available": true
+    },
+    {
+      
+      "name": "Lucas Santos",
+      "email": "tourguid11.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREoTcsruf1s2VNH9RYFWgEcrsvGujjficOww&s",
+      "bio": "Experienced beach tour guide.",
+      "experience": "4 years in tourism",
+      "ratings": 4.4,
+      "available": false
+    },
+    {
+      
+      "name": "Fatima Yusuf",
+      "email": "tourguid12.com",
+      "image": "https://www.intrepidtravel.com/adventures/wp-content/uploads/2018/12/Pushkar-1.jpg",
+      "bio": "Nature and cultural guide.",
+      "experience": "7 years in tourism",
+      "ratings": 4.7,
+      "available": true
+    },
+    {
+      
+      "name": "Daniel Kim",
+      "email": "tourguid13.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl-gx9Z8ubjoVrPANSA2YaE1vTQfcR1-YaJw&s",
+      "bio": "Urban and historical guide.",
+      "experience": "5 years in tourism",
+      "ratings": 4.5,
+      "available": true
+    },
+    {
+      
+      "name": "Clara Johnson",
+      "email": "tourguid14.com",
+      "image": "https://media.gettyimages.com/id/1410995220/photo/tour-guide-at-work.jpg?s=612x612&w=gi&k=20&c=FLcGVoph6vISqwt7FCvRbdyyrNzDn-JNRbBrs-sZxy8=",
+      "bio": "Specialist in photography tours.",
+      "experience": "8 years in tourism",
+      "ratings": 4.9,
+      "available": false
+    },
+    {
+      
+      "name": "Hassan Ali",
+      "email": "tourguid15.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlbypN9iAdU1iAk9ypaBF5R2VgPb0NK6fScg&s",
+      "bio": "Wildlife tours expert.",
+      "experience": "6 years in tourism",
+      "ratings": 4.6,
+      "available": true
+    }
+  ]

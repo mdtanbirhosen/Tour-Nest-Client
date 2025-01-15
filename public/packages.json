@@ -1,0 +1,262 @@
+[
+    {
+        
+        "name": "Adventure in Cox's Bazar",
+        "description": "Explore the longest sea beach in the world with a 5-day guided tour.",
+        "images": [
+            "https://tripjive.com/wp-content/uploads/2024/11/adventure-activities-for-eco-enthusiasts-in-Coxs-Bazar-1024x585.jpg",
+            "https://tripjive.com/wp-content/uploads/2024/11/Adventure-tourism-in-Coxs-Bazar-1024x585.jpg",
+            "https://tripjive.com/wp-content/uploads/2024/11/Adventure-sports-in-Coxs-Bazar-768x439.jpg"
+        ],
+        "tourType": "Adventure",
+        "price": 15000,
+        "days": 5,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and check-in."
+            },
+            {
+                "day": 2,
+                "details": "Visit local attractions."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Serene Sylhet Retreat",
+        "description": "Experience the lush greenery and tea gardens of Sylhet on a 3-day tour.",
+        "images": [
+            "https://tripjive.com/wp-content/uploads/2024/11/Sylhet-nature-retreats-1-1024x585.jpg",
+            "https://tripjive.com/wp-content/uploads/2024/11/eco-tourism-in-Sylhet-1024x585.jpg",
+            "https://tripjive.com/wp-content/uploads/2024/11/nature-centric-accommodations-in-Sylhet-1024x585.jpg"
+        ],
+        "tourType": "Family",
+        "price": 12000,
+        "days": 3,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and tea garden visit."
+            },
+            {
+                "day": 2,
+                "details": "Explore local sites."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Romantic Rangamati Escape",
+        "description": "A peaceful 4-day honeymoon trip to the picturesque hills of Rangamati.",
+        "images": [
+            "https://tbbd-flight.s3.ap-southeast-1.amazonaws.com/blogbFlHwgu8i0AcgcO-imqe20t7Udt5AoNx.png",
+            "https://eastindiatour.com/wp-content/uploads/elementor/thumbs/Rangamati-qis0plyj1cfufctlqsfb95uio2bzh5lbdl927khtgw.jpg",
+            "https://www.thetouristplace.com/wp-content/uploads/2021/12/Sajek-Valley-Rangamati-view.jpg"
+        ],
+        "tourType": "Honeymoon",
+        "price": 18000,
+        "days": 4,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and boat cruise."
+            },
+            {
+                "day": 2,
+                "details": "Visit Hanging Bridge."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Cultural Dhaka Discovery",
+        "description": "Immerse yourself in the history and culture of Dhaka over a 2-day trip.",
+        "images": [
+            "https://tripjive.com/wp-content/uploads/2024/11/historical-sites-in-Dhaka-1024x585.jpg",
+            "https://www.travelandexplorebd.com/storage/app/public/posts/February2020/6yU9wNg64XgG4ttvSVlL.jpg",
+            "https://tripjive.com/wp-content/uploads/2024/11/landmarks-in-Dhaka-1024x585.jpg"
+        ],
+        "tourType": "Cultural",
+        "price": 8000,
+        "days": 2,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Visit Lalbagh Fort and Ahsan Manzil."
+            },
+            {
+                "day": 2,
+                "details": "Explore Old Dhaka's markets."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Wildlife at Sundarbans",
+        "description": "Discover the majestic Royal Bengal Tigers and the mangrove forest over a 6-day tour.",
+        "images": [
+            "https://tripjive.com/wp-content/uploads/2024/11/What-are-the-best-Sundarbans-tours-for-wildlife-photography.jpg",
+            "https://res.cloudinary.com/roundglass/image/upload/v1584346399/roundglass/sustain/Sundarbans_Bengal-tiger_Soumyajit-Nandy3-copy_mbfgig.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Sundarbans_river.jpg/800px-Sundarbans_river.jpg"
+        ],
+        "tourType": "Adventure",
+        "price": 25000,
+        "days": 6,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Departure from Dhaka."
+            },
+            {
+                "day": 2,
+                "details": "Boat tour through the mangroves."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Beach Vibes in Kuakata",
+        "description": "Enjoy the sunrise and sunset at the 'Daughter of the Sea' on this 4-day tour.",
+        "images": [
+            "https://www.travelmate.com.bd/wp-content/uploads/2020/08/Sunrise-in-Kuakata.jpg.webp",
+            "https://live.staticflickr.com/5531/9546016444_eb6c71d3e3_b.jpg",
+            "https://www.travelmate.com.bd/wp-content/uploads/2020/08/Kuakata-Morning.jpg.webp"
+        ],
+        "tourType": "Family",
+        "price": 14000,
+        "days": 4,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and beach walk."
+            },
+            {
+                "day": 2,
+                "details": "Local sightseeing and market visit."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Charming Chittagong",
+        "description": "Explore the port city of Chittagong and its surrounding hills in a 3-day tour.",
+        "images": [
+            "https://www.tbsnews.net/sites/default/files/styles/infograph/public/images/2023/03/23/chittagong_railway_building.jpg",
+            "https://tripjive.com/wp-content/uploads/2024/11/What-are-some-hidden-gems-in-Chittagong-that-most-tourists-miss.jpg",
+            "https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/01/18/28c228ed7564a243e811f23d5502e75a_1000x1000.jpg"
+        ],
+        "tourType": "Adventure",
+        "price": 16000,
+        "days": 3,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and city tour."
+            },
+            {
+                "day": 2,
+                "details": "Visit Patenga Beach and Foy's Lake."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Eco-Tourism in Bandarban",
+        "description": "Reconnect with nature in Bandarban's serene eco-tourist spots during a 5-day trip.",
+        "images": [
+            "https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/06/29/983a5752ef7bdbf6b5465197e079e85f_1000x1000.jpg",
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/77/22/11/amiakhum.jpg?w=900&h=500&s=1",
+            "https://www.munlai.com.bd/img/slide/slide2.jpg"
+        ],
+        "tourType": "Nature",
+        "price": 20000,
+        "days": 5,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and hill trek."
+            },
+            {
+                "day": 2,
+                "details": "Visit Nilgiri and Golden Temple."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Pilgrimage to Bagerhat",
+        "description": "A 2-day spiritual journey to the historical mosques of Bagerhat.",
+        "images": [
+            "https://wmf.imgix.net/images/b4_bgd_mosque_city_of_bagerhat_shaitgumbad_mosque_20200516.jpg",
+            "https://wmf.imgix.net/images/88_bgd_mosque_city_of_bagerhat_chunakhola_mosque_20200101.jpg?auto=format,compress&fit=max&w=4040",
+            "https://today.thefinancialexpress.com.bd/uploads/1654533069.jpg"
+        ],
+        "tourType": "Cultural",
+        "price": 9000,
+        "days": 2,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and visit the Sixty Dome Mosque."
+            },
+            {
+                "day": 2,
+                "details": "Explore other UNESCO World Heritage Sites."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    },
+    {
+        
+        "name": "Historic Bogra and Mahasthangarh",
+        "description": "Dive into history with this 3-day tour of Mahasthangarh and Bogra.",
+        "images": [
+            "https://www.travelmate.com.bd/wp-content/uploads/2021/05/mahasthangarh-bogura.jpg.webp",
+            "https://www.travelmate.com.bd/wp-content/uploads/2021/05/Mahasthangarh-Paundravardhanapura.jpg.webp",
+            "https://lastdaytrip.com/wp-content/uploads/2022/03/Buddhist-Heritage-in-Bangladesh-870x555.gif"
+        ],
+        "tourType": "Cultural",
+        "price": 13000,
+        "days": 3,
+        "tourPlan": [
+            {
+                "day": 1,
+                "details": "Arrival and visit archaeological sites."
+            },
+            {
+                "day": 2,
+                "details": "Tour of Paharpur and other landmarks."
+            }
+        ],
+        "createdBy": "admin@gmail.com",
+        "createdAt": "2025-01-14T00:00:00Z",
+        "updatedAt": "2025-01-14T00:00:00Z"
+    }
+]

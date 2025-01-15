@@ -6,6 +6,9 @@ const Community = () => {
       <Helmet>
         <title>Community || TOUR NEST</title>
       </Helmet>
+      <div>
+        this is community Page
+      </div>
     </div>
   );
 };

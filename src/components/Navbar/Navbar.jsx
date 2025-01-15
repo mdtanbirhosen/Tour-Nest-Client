@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Button from "../Button/Button";
 import logo from "../../assets/logo.png";
+import { CiUser } from "react-icons/ci";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const links = (
@@ -75,13 +76,13 @@ const Navbar = () => {
         </div>
         <div className="flex gap-1 items-center">
           <img src={logo} className="h-[40px]" alt="" />
-          <a className=" font-semibold text-xl">TOUR NEST</a>
+          <a className="hidden sm:flex font-semibold text-xl">TOUR NEST</a>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end ">
         {user ? (
           <Button text="logout" onClick={logOut}></Button>
         ) : (
@@ -90,17 +91,20 @@ const Navbar = () => {
           </Link>
         )}
 
-        <div className="dropdown dropdown-end">
+        <div className="dropdown dropdown-end ml-2">
           <div
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+              {user?.photoURL ? (
+                <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+              ) : (
+                <div className="flex items-center justify-center text-primary-color">
+                  <CiUser className="text-4xl"></CiUser>
+                </div>
+              )}
             </div>
           </div>
           <ul
