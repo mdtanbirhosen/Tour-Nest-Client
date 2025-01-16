@@ -14,8 +14,9 @@ const Register = () => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
-    const image = form.image.files[0]; // Access the uploaded image
+    const image = form.image.files[0]; 
     const password = form.password.value;
+    console.log(image)
 
     // Validate the image, email, and password strength
     if (!image) {
@@ -31,26 +32,35 @@ const Register = () => {
     }
 
     try {
-      // Register user
-      createUser(email, password).then((res) => {
-        console.log(res);
-        updateUserProfile(name)
-        .then(() => {
-          const userInfo = {
-            email: res.user?.email,
-            name: res.user?.displayName
-          }
-          axiosPublic.post('/users',userInfo)
-          .then(res=>{
-            console.log(res.data)
-            toast.success("Registration successful!");
-            navigate(location?.state ? location.state : "/");
-          })
+      const uploadedImage = await axiosPublic.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_hosting_key}`,{image},{
+        headers: {
+            'content-type': 'multipart/form-data'
+        }})
+      console.log(uploadedImage.data.data.display_url)
+      const uploadedImageURL=uploadedImage.data.data.display_url
+      if(uploadedImageURL){
+        // Register user
+        createUser(email, password).then((res) => {
+          console.log(res);
+          updateUserProfile(name,uploadedImageURL)
+          .then(() => {
+            const userInfo = {
+              email: res.user?.email,
+              name: res.user?.displayName,
+              photoURL: uploadedImageURL,
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res=>{
+              console.log(res.data)
+              toast.success("Registration successful!");
+              navigate(location?.state ? location.state : "/");
+            })
+          });
         });
-      });
+      }
 
       // Redirect to home or desired route after successful registration
-      navigate("/");
+      // navigate("/");
     } catch (error) {
       console.error("Registration failed:", error);
       toast.error(error.message || "Failed to register. Please try again.");
@@ -59,7 +69,7 @@ const Register = () => {
 
   // Password validation (min 8 chars, 1 uppercase, 1 number, 1 special character)
   const validatePassword = (password) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*0-9])(?=.{6,})/;
     return passwordRegex.test(password);
   };
 

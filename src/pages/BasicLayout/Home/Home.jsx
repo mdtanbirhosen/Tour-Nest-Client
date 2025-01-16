@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import OverView from "./OverView/OverView";
 import TourismAndTravelGuide from "./TourismAndTravelGuide/TourismAndTravelGuide";
+import TouristStory from "./TouristStory/TouristStory";
 
 const Home = () => {
   return (
@@ -15,6 +16,9 @@ const Home = () => {
       {/* Tourism and Travel Guide Section*/}
       <section className="my-10 px-2 md:px-5 py-8 md:py-10 bg-white rounded-2xl">
         <TourismAndTravelGuide></TourismAndTravelGuide>
+      </section>
+      <section>
+        <TouristStory></TouristStory>
       </section>
     </div>
   );

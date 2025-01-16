@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCdQdIpnh5fa0ywmMLJwvPX8b7XnQF8K9g",
-  authDomain: "tour-nest-329ae.firebaseapp.com",
-  projectId: "tour-nest-329ae",
-  storageBucket: "tour-nest-329ae.firebasestorage.app",
-  messagingSenderId: "973753994756",
-  appId: "1:973753994756:web:4abd82c7d8a5b2eb83af51"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
