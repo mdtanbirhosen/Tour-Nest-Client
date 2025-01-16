@@ -16,7 +16,7 @@ const MeetOurTourGuides = () => {
     return (
         <div className="mt-10">
             <div className="grid lg:grid-cols-2  gap-5">
-            {randomGuides.map((randomGuide)=><TourGuideCard key={randomGuide._id} randomGuide={randomGuide}></TourGuideCard>)}
+            {randomGuides.map((randomGuide)=><TourGuideCard key={randomGuide._id} tourGuide={randomGuide}></TourGuideCard>)}
             </div>
         </div>
     );

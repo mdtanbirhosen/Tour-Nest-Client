@@ -7,7 +7,7 @@ const AboutTourPackage = ({ packageInfo }) => {
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl">
       <figure>
-        <img src={images[2]} alt="Album" />
+        <img className="h-full w-full object-cover" src={images[2]} alt="Album" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>

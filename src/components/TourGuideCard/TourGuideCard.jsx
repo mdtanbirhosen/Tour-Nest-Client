@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
-const TourGuideCard = ({ randomGuide }) => {
-  const { image, name, bio, ratings, _id } = randomGuide;
+const TourGuideCard = ({ tourGuide }) => {
+  const { image, name, bio, ratings, _id } = tourGuide;
 
 
   return (
@@ -33,6 +33,6 @@ const TourGuideCard = ({ randomGuide }) => {
   );
 };
 TourGuideCard.propTypes = {
-  randomGuide: PropTypes.object.isRequired,
+  tourGuide: PropTypes.object.isRequired,
 };
 export default TourGuideCard;

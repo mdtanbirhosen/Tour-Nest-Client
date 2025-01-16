@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import GoogleSignIn from "../../components/GoogleSignIn/GoogleSignIn";
 
 const Login = () => {
-  const { loginUser } = useAuth();
+  const { signIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    loginUser(email, password)
+    signIn(email, password)
       .then((result) => {
         console.log(result);
         form.email.value = "";
