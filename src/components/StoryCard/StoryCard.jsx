@@ -1,38 +1,59 @@
 import PropTypes from "prop-types";
-import { FacebookShareButton, FacebookIcon } from 'react-share';
-import { toast } from 'react-hot-toast';
+import { FacebookShareButton, FacebookIcon } from "react-share";
+import { toast } from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-const StoryCard = ({story}) => {
-    const navigate = useNavigate()
-    const {user} = useAuth()
-    const handleShare = (storyUrl) => {
-        console.log(storyUrl)
-        if (!user) {
-          toast.error('You need to be logged in to share a story!');
-          navigate('/login');
-        }
-      };
+const StoryCard = ({ story }) => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const handleShare = (storyUrl) => {
+    console.log(storyUrl);
+    if (!user) {
+      toast.error("You need to be logged in to share a story!");
+      navigate("/login");
+    }
+  };
   return (
     <div
-      
-      className="border rounded-lg p-4 shadow-md hover:shadow-lg transition"
+      style={{
+        backgroundImage: `url(${story?.images[0]})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className={`border rounded-lg  shadow-md hover:shadow-lg transition  bg-fixed `}
     >
-      <h3 className="text-xl font-semibold">{story.title}</h3>
-      <p className="text-gray-600">{story.description}</p>
-      <div className="mt-4 flex items-center justify-between">
-        <FacebookShareButton
-          url={story.url}
-          quote={story.title}
-          onClick={() => handleShare(story.url)}
-        >
-          <FacebookIcon size={32} round />
-        </FacebookShareButton>
+<div className="text-primary-color bg-basic-bg hover:bg-black hover:text-white hover:bg-opacity-60 h-full w-full p-4 rounded-lg transition duration-300 ease-in-out">
+        <h3 className="text-lg md:text-xl font-semibold ">
+          {story?.title}
+        </h3>
+        <p className=" text-xs md:text-sm lg:text-base  ">
+          {story?.text.split("").slice(0, 50)}...
+          <span className="link-hover">see more</span>
+        </p>
+        <p className=" text-xs md:text-sm lg:text-base mt-1">
+          <strong>Saying :</strong>
+          {story.authorRole}
+        </p>
+
+        <div className="mt-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <p className="mr-2">
+              <strong>Share With:</strong>
+            </p>
+            <FacebookShareButton
+              url={"https://www.facebook.com/"}
+              quote={story?.title}
+              onClick={() => handleShare(story?.url)}
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
-StoryCard.propTypes ={
-    story: PropTypes.object.isRequired,
-}
+StoryCard.propTypes = {
+  story: PropTypes.object.isRequired,
+};
 export default StoryCard;

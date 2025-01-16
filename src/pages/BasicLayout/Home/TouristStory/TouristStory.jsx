@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import StoryCard from "../../../../components/StoryCard/StoryCard";
 
 const TouristStory = () => {
   const navigate = useNavigate();
@@ -17,11 +18,10 @@ const TouristStory = () => {
   console.log(randomStories)
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-6">Random Stories</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* {stories.map((story) => (
-          
-        ))} */}
+        {randomStories.map((story) => (
+          <StoryCard key={story._id} story={story}></StoryCard>
+        ))}
       </div>
       <div className="mt-8 flex gap-4">
         <button
