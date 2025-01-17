@@ -22,8 +22,8 @@ const StoryCard = ({ story }) => {
       }}
       className={`border rounded-lg  shadow-md hover:shadow-lg transition  bg-fixed `}
     >
-<div className="text-primary-color bg-basic-bg hover:bg-black hover:text-white hover:bg-opacity-60 h-full w-full p-4 rounded-lg transition duration-300 ease-in-out">
-        <h3 className="text-lg md:text-xl font-semibold ">
+<div className="text-primary-color bg-basic-bg hover:bg-black hover:text-white hover:bg-opacity-60 h-full w-full p-4 rounded-lg transition duration-300 ease-in-out border-2 border-gray-300">
+        <h3 className="text-lg md:text-xl font-semibold text-center">
           {story?.title}
         </h3>
         <p className=" text-xs md:text-sm lg:text-base  ">

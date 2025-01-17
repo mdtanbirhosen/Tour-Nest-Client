@@ -5,7 +5,7 @@ const useAllTourGuide = () => {
     const axiosPublic = useAxiosPublic()
     
         const{data:allTourGuide = [],isLoading} = useQuery({
-            queryKey:['random-guides'],
+            queryKey:['guides'],
             queryFn: async()=>{
                 const res = await axiosPublic('/tourGuides')
                 return res.data

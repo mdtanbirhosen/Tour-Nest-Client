@@ -26,7 +26,7 @@ const TouristStory = () => {
       <div className="mt-8 flex gap-4">
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600"
-          onClick={() => navigate("/allStories")}
+          onClick={() => navigate("/community")}
         >
           All Stories
         </button>
