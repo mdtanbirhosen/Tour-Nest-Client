@@ -16,6 +16,7 @@ import ManageCandidates from "../pages/Dashboard/AdminDashboard/ManageCandidates
 import AboutUs from "../pages/BasicLayout/AboutUs/AboutUs";
 import Trips from "../pages/BasicLayout/Trips/Trips";
 import PackageDetails from "../pages/BasicLayout/PackageDetails/PackageDetails";
+import TourGuideProfile from "../pages/BasicLayout/TourGuideProfile/TourGuideProfile";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
             path:'/packageDetails/:id',
             element:<PackageDetails></PackageDetails>,
             loader: ({params})=> fetch(`http://localhost:5000/package/${params.id}`)
+          },
+          {
+            path:'/tourGuideProfile/:id',
+            element: <TourGuideProfile></TourGuideProfile>,
+            loader: ({params})=> fetch(`http://localhost:5000/tourGuideProfile/${params.id}`)
+
           }
           
         ],

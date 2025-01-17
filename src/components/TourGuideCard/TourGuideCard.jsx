@@ -24,7 +24,7 @@ const TourGuideCard = ({ tourGuide }) => {
           <strong>ratings:</strong> {ratings}
         </p>
         <div className="card-actions justify-end">
-          <Link to={`/tourGuideDetails/${_id}`}>
+          <Link to={`/tourGuideProfile/${_id}`}>
             <Button text="Details"></Button>
           </Link>
         </div>

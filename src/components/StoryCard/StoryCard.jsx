@@ -3,7 +3,7 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 import { toast } from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-const StoryCard = ({ story }) => {
+const StoryCard = ({ story={} }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const handleShare = (storyUrl) => {
