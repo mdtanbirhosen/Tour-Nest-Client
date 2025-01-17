@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Button from "../../../../components/Button/Button";
 
 const AboutTourPackage = ({ packageInfo }) => {
   const { images, name, createdBy, tourType, price, days, description } =
@@ -32,7 +33,7 @@ const AboutTourPackage = ({ packageInfo }) => {
           {description}
         </p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Listen</button>
+          <a href="#booking-form"><Button text="Go To Booking Form"></Button></a>
         </div>
       </div>
     </div>
