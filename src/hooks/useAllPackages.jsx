@@ -11,6 +11,7 @@ const useAllPackages = () => {
         return res.data;
       },
     });
+    
     console.log(isLoading)
     return [allPackages,isLoading]
 };

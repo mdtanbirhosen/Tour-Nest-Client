@@ -5,6 +5,7 @@ import PackagesCard from "../../../components/PackagesCard/PackagesCard";
 
 const Trips = () => {
   const [allPackages] = useAllPackages();
+ 
   return (
     <div>
       <Helmet>

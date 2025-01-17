@@ -71,6 +71,7 @@ const AuthProvider = ({ children }) => {
   }, [axiosPublic]);
 
   const authInfo = {
+    setLoading,
     user,
     loading,
     createUser,

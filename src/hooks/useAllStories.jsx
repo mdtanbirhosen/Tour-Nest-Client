@@ -11,6 +11,7 @@ const useAllStories = () => {
             return res.data
         }
     })
+    
 return [allStories,isLoading]
 };
 
