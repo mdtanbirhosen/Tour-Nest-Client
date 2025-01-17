@@ -17,6 +17,7 @@ import AboutUs from "../pages/BasicLayout/AboutUs/AboutUs";
 import Trips from "../pages/BasicLayout/Trips/Trips";
 import PackageDetails from "../pages/BasicLayout/PackageDetails/PackageDetails";
 import TourGuideProfile from "../pages/BasicLayout/TourGuideProfile/TourGuideProfile";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
           // common in dashboard 
           {

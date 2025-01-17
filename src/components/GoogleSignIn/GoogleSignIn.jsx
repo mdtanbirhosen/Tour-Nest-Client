@@ -17,6 +17,7 @@ const GoogleSignIn = () => {
               email: result.user?.email,
               name: result.user?.displayName,
               photoURL: result.user?.photoURL,
+              createdAt:new Date(),
             }
             axiosPublic.post('/users',userInfo)
             .then(res=>{

@@ -48,6 +48,7 @@ const Register = () => {
               email: res.user?.email,
               name: res.user?.displayName,
               photoURL: uploadedImageURL,
+              createdAt: new Date(),
             }
             axiosPublic.post('/users',userInfo)
             .then(res=>{

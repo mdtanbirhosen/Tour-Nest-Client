@@ -3,12 +3,9 @@ import { useLoaderData } from "react-router-dom";
 import Title from "../../../components/Title/Title";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-// keen slider
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
+import StoryCard from "../../../components/StoryCard/StoryCard";
 
 const TourGuideProfile = () => {
-  const [sliderRef] = useKeenSlider();
   const tourGuideInfo = useLoaderData();
   const { name, email, bio, experience, image, ratings } = tourGuideInfo;
   const axiosPublic = useAxiosPublic();
@@ -68,22 +65,10 @@ const TourGuideProfile = () => {
       <section className="mb-10">
         <Title title={`${name}'s stories`} subTitle={'slide to see more..'}></Title>
         {specificStories ? (
-          <div ref={sliderRef} className="keen-slider bg-white  rounded-lg">
-            {specificStories.map((story) => (
-              <div
-                key={story._id}
-                className="keen-slider__slide number-slide1 h-[300px] relative"
-              >
-                <div>
-                    <img src={story?.images[0]} className="object-cover w-full h-full" alt="" />
-                </div>
-                <div className="h-full w-full absolute inset-0 bg-black bg-opacity-70  text-center flex flex-col items-center justify-center">
-                    <h3 className="text-white font-bold text-2xl">{story?.title}</h3>
-                    <p className="text-gray-400">{story?.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          
+        <div className="grid md:grid-cols-2 gap-5 lg:grid-cols-3">
+          {specificStories?.map(story=><StoryCard key={story._id} story={story}></StoryCard>)}
+        </div>
         ) : (
           <div>There are no stories available</div>
         )}
