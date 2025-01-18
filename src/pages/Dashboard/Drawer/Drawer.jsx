@@ -5,12 +5,25 @@ const Drawer = () => {
     <>
       {/* Sidebar content here */}
       {/* dashboard links */}
-         
-      <li><Link to={'/dashboard/'}>Manage profile</Link></li>
-      <li><Link to={'/dashboard/MyBookings'}>My Bookings</Link></li>
-      <li><Link to={'/dashboard/ManageStories'}> Manage Stories</Link></li>
-      <li><Link to={'/dashboard/AddStories'}>Add Stories</Link></li>
-      <li><Link to={'/dashboard/JoinAsTourGuide'}>Join as tour guide</Link></li>
+
+      <li>
+        <Link to={"/dashboard/"}>Manage profile</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/ManageStories"}> Manage Stories</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/AddStories"}>Add Stories</Link>
+      </li>
+      {/* tourist only routes ----------------------------------------------------------------- */}
+      <li>
+        <Link to={"/dashboard/touristDashboard/myBookings"}>My Bookings</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/touristDashboard/joinAsTourGuide"}>
+          Join as tour guide
+        </Link>
+      </li>
 
       <div className="divider"></div>
       {/* basic links */}
@@ -33,9 +46,7 @@ const Drawer = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
-        
-        
-        
+
         {/* old code ... */}
         {/* <label
           htmlFor="my-drawer-2"

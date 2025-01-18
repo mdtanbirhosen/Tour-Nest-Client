@@ -9,12 +9,16 @@ import Button from "../../../../components/Button/Button";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 const BookingForm = ({ packageInfo }) => {
+
   const [tourDate, setTourDate] = useState(null);
   const [selectedGuide, setSelectedGuide] = useState("");
   const [allTourGuide] = useAllTourGuide();
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate()
+
 
 
   const { user } = useAuth();
@@ -27,6 +31,9 @@ const BookingForm = ({ packageInfo }) => {
       toast.error("Please select a tour date and guide.");
       return;
     }
+// get single data of tour guide using id 
+    const {data:tourGuide} = await axiosPublic(`/tourGuideProfile/${selectedGuide}`)
+    
 
     const formData = {
       packageId: packageInfo?._id,
@@ -34,7 +41,8 @@ const BookingForm = ({ packageInfo }) => {
       touristName: user?.displayName,
       touristEmail: user?.email,
       tourDate,
-      GuideId:selectedGuide,
+      guideId:selectedGuide,
+      guideDetails:tourGuide,
       price,
     };
 

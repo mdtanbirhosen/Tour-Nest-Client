@@ -18,6 +18,7 @@ import Trips from "../pages/BasicLayout/Trips/Trips";
 import PackageDetails from "../pages/BasicLayout/PackageDetails/PackageDetails";
 import TourGuideProfile from "../pages/BasicLayout/TourGuideProfile/TourGuideProfile";
 import PrivateRoutes from "./PrivateRoutes";
+import JoinAsTourGuide from "../pages/Dashboard/TouristDashboard/JoinAsTourGuide/JoinAsTourGuide";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
             index:true,
             element: <ManageProfile></ManageProfile>
           },
+          // ----------------------------------------------------------------------------------------------------------------------------------------
           // Tourist only dashboard
           {
             path: '/dashboard/touristDashboard',
@@ -75,10 +77,16 @@ const router = createBrowserRouter([
               {
                 path: '/dashboard/touristDashboard/myBookings',
                 element: <MyBookings></MyBookings>
-              }
+              },
+              {
+                path: '/dashboard/touristDashboard/joinAsTourGuide',
+                element:<JoinAsTourGuide></JoinAsTourGuide>
+              },
             ]
 
           },
+          
+          // -------------------------------------------------------------------------------------------------------------------------------------
           // Tourist guides only dashboard
           {
             path:'/dashboard/guideDashboard',
@@ -89,6 +97,7 @@ const router = createBrowserRouter([
               }
             ]
           },
+          // ---------------------------------------------------------------------------------------------------------------------------------------------
           // Admins only dashboard
           {
             path: '/dashboard/adminDashboard',

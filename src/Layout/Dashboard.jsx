@@ -12,7 +12,7 @@ const Dashboard = () => {
         <aside>
           <Drawer></Drawer>
         </aside>
-        <main className="min-h-[calc(100vh-66px)] lg:min-h-screen w-full bg-gradient-to-b from-basic-bg via-white to-dashboard-bg p-2 md:p-5">
+        <main className="min-h-[calc(100vh-66px)] lg:min-h-screen w-full bg-gradient-to-b from-basic-bg via-white to-dashboard-bg p-2 lg:p-0">
           <Outlet></Outlet>
           
         </main>
