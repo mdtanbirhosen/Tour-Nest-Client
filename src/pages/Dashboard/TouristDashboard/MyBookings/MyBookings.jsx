@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import Swal from "sweetalert2";
 import InternalLoading from "../../../../components/Loading/InternalLoading";
+import Button from "../../../../components/Button/Button";
 
 const MyBookings = () => {
   const [userInfo] = useUserInfo();
@@ -99,13 +100,10 @@ const MyBookings = () => {
                   <td>${booking.price}</td>
                   <td>
                     <span
-                      className={`badge ${
-                        booking.status === "Pending"
-                          ? "badge-warning"
-                          : booking.status === "Accepted"
-                          ? "badge-success"
-                          : "badge-error"
-                      }`}
+                      className={`badge 
+                        ${booking.status ==='Pending' && 'bg-yellow-400'}
+                        ${booking.status ==='in review' && 'bg-green-400'}
+                        `}
                     >
                       {booking.status}
                     </span>
@@ -113,18 +111,18 @@ const MyBookings = () => {
                   <td>
                     {booking.status === "Pending" && (
                       <div className="flex space-x-2">
-                        <button
-                          onClick={() => handlePayBooking(booking._id)}
-                          className="btn btn-sm btn-success"
-                        >
-                          Pay
-                        </button>
-                        <button
+                        <Button
+                        text="Pay"
+                          onClick={() => handlePayBooking(booking._id)}>
+                          
+                        </Button>
+                        <Button
+                        text="Cancel"
                           onClick={() => handleCancelBooking(booking._id)}
-                          className="btn btn-sm btn-error"
+                          className="bg-red-500 hover:bg-red-300"
                         >
-                          Cancel
-                        </button>
+                          
+                        </Button>
                       </div>
                     )}
                   </td>

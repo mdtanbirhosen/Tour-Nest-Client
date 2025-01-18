@@ -12,12 +12,15 @@ const Drawer = () => {
       <li>
         <Link to={"/dashboard/ManageStories"}> Manage Stories</Link>
       </li>
-      <li>
-        <Link to={"/dashboard/AddStories"}>Add Stories</Link>
-      </li>
       {/* tourist only routes ----------------------------------------------------------------- */}
       <li>
         <Link to={"/dashboard/touristDashboard/myBookings"}>My Bookings</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/touristDashboard/addStories"}>Add Stories</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/touristDashboard/manageStories"}>Manage Stories</Link>
       </li>
       <li>
         <Link to={"/dashboard/touristDashboard/joinAsTourGuide"}>

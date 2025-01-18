@@ -1,6 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import GoogleSignIn from "../../components/GoogleSignIn/GoogleSignIn";
+import signInAnimation from '../../assets/signInAnimation.json'
+import Lottie from "lottie-react";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -27,17 +29,11 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-primary-color flex items-center justify-center py-5 md:py-10 px-5">
-      <div className="max-w-6xl bg-white rounded-2xl shadow-lg grid lg:grid-cols-2 items-center w-full overflow-hidden">
+      <div className="max-w-6xl bg-white rounded-2xl shadow-lg grid lg:grid-cols-2 items-center w-full overflow-hidden lg:pl-5">
         {/* Lottie or Image Section */}
-        <div className="hidden lg:flex justify-center items-center bg-gray-100 p-5 md:p-10">
+        <div className="hidden lg:flex justify-center items-center bg-gray-100 p-5 md:p-8">
           {/* Replace this div with your Lottie animation or image */}
-          <div className="w-full max-w-xs">
-            <img
-              src="https://via.placeholder.com/400x400"
-              alt="Login Illustration"
-              className="w-full h-auto"
-            />
-          </div>
+          <Lottie animationData={signInAnimation}></Lottie>
         </div>
 
         {/* Login Form Section */}

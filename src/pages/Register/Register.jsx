@@ -3,7 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import GoogleSignIn from "../../components/GoogleSignIn/GoogleSignIn";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-
+import Lottie from "lottie-react";
+import signUpAnimation from '../../assets/signUpAnimation.json'
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
@@ -79,13 +80,7 @@ const Register = () => {
       <div className="max-w-6xl bg-white rounded-2xl shadow-lg grid lg:grid-cols-2 items-center w-full overflow-hidden">
         {/* Lottie or Image Section */}
         <div className="hidden lg:flex justify-center items-center bg-gray-100 p-5 md:p-10">
-          <div className="w-full max-w-xs">
-            <img
-              src="https://via.placeholder.com/400x400"
-              alt="Register Illustration"
-              className="w-full h-auto"
-            />
-          </div>
+          <Lottie animationData={signUpAnimation}></Lottie>
         </div>
 
         {/* Register Form Section */}
