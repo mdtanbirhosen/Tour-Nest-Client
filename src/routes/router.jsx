@@ -19,6 +19,7 @@ import PackageDetails from "../pages/BasicLayout/PackageDetails/PackageDetails";
 import TourGuideProfile from "../pages/BasicLayout/TourGuideProfile/TourGuideProfile";
 import PrivateRoutes from "./PrivateRoutes";
 import JoinAsTourGuide from "../pages/Dashboard/TouristDashboard/JoinAsTourGuide/JoinAsTourGuide";
+import Payment from "../pages/Dashboard/TouristDashboard/MyBookings/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -79,7 +80,16 @@ const router = createBrowserRouter([
                 element: <MyBookings></MyBookings>
               },
               {
+                path: '/dashboard/touristDashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params})=> fetch(`http://localhost:5000/booking/${params.id}`)
+              },
+              {
                 path: '/dashboard/touristDashboard/joinAsTourGuide',
+                element:<JoinAsTourGuide></JoinAsTourGuide>
+              },
+              {
+                path: '/dashboard/touristDashboard/addStories',
                 element:<JoinAsTourGuide></JoinAsTourGuide>
               },
             ]

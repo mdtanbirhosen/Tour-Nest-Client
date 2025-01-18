@@ -3,8 +3,8 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useUserInfo from "../../../../hooks/useUserInfo";
-import Loading from "../../../../components/Loading/Loading";
 import Swal from "sweetalert2";
+import InternalLoading from "../../../../components/Loading/InternalLoading";
 
 const MyBookings = () => {
   const [userInfo] = useUserInfo();
@@ -63,11 +63,11 @@ const MyBookings = () => {
   };
 
   const handlePayBooking = (bookingId) => {
-    navigate(`/dashboard/payment/${bookingId}`);
+    navigate(`/dashboard/touristDashboard/payment/${bookingId}`);
   };
 
   if (isLoading) {
-    return <Loading />;
+    return <InternalLoading />;
   }
 
   return (
