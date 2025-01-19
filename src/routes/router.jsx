@@ -23,6 +23,7 @@ import Payment from "../pages/Dashboard/TouristDashboard/MyBookings/Payment/Paym
 import AddStories from "../pages/Dashboard/TouristDashboard/AddStories/AddStories";
 import ManageStories from "../pages/Dashboard/TouristDashboard/ManageStories/ManageStories";
 import EditStory from "../pages/Dashboard/TouristDashboard/ManageStories/EditStory";
+import MyAssignedTours from "../pages/Dashboard/TouristGuideDashboard/MyAssignedTours/MyAssignedTours";
 
 const router = createBrowserRouter([
   {
@@ -70,38 +71,38 @@ const router = createBrowserRouter([
           // common in dashboard 
           {
             index:true,
-            element: <ManageProfile></ManageProfile>
+            element: <PrivateRoutes><ManageProfile></ManageProfile></PrivateRoutes>
           },
           // ----------------------------------------------------------------------------------------------------------------------------------------
           // Tourist only dashboard
           {
             path: '/dashboard/touristDashboard',
-            element:<TouristDashboard></TouristDashboard>,
+            element:<PrivateRoutes><TouristDashboard></TouristDashboard></PrivateRoutes>,
             children:[
               {
                 path: '/dashboard/touristDashboard/myBookings',
-                element: <MyBookings></MyBookings>
+                element: <PrivateRoutes><MyBookings></MyBookings></PrivateRoutes>
               },
               {
                 path: '/dashboard/touristDashboard/payment/:id',
-                element: <Payment></Payment>,
+                element: <PrivateRoutes><Payment></Payment></PrivateRoutes>,
                 loader: ({params})=> fetch(`http://localhost:5000/booking/${params.id}`)
               },
               {
                 path: '/dashboard/touristDashboard/joinAsTourGuide',
-                element:<JoinAsTourGuide></JoinAsTourGuide>
+                element:<PrivateRoutes><JoinAsTourGuide></JoinAsTourGuide></PrivateRoutes>
               },
               {
                 path: '/dashboard/touristDashboard/addStories',
-                element:<AddStories></AddStories>
+                element:<PrivateRoutes><AddStories></AddStories></PrivateRoutes>
               },
               {
                 path: '/dashboard/touristDashboard/manageStories',
-                element:<ManageStories></ManageStories>
+                element:<PrivateRoutes><ManageStories></ManageStories></PrivateRoutes>
               },
               {
                 path: '/dashboard/touristDashboard/editStory/:id',
-                element:<EditStory></EditStory>
+                element:<PrivateRoutes><EditStory></EditStory></PrivateRoutes>
               },
             ]
 
@@ -110,11 +111,12 @@ const router = createBrowserRouter([
           // -------------------------------------------------------------------------------------------------------------------------------------
           // Tourist guides only dashboard
           {
-            path:'/dashboard/guideDashboard',
-            element: <TouristGuideDashboard></TouristGuideDashboard>,
+            path:'/dashboard/touristGuideDashboard',
+            element: <PrivateRoutes><TouristGuideDashboard></TouristGuideDashboard></PrivateRoutes>,
             children:[
               {
-
+                path:'/dashboard/touristGuideDashboard/myAssignedTours',
+                element:<MyAssignedTours></MyAssignedTours>
               }
             ]
           },

@@ -100,7 +100,7 @@ const MyBookings = () => {
                   <td>${booking.price}</td>
                   <td>
                     <span
-                      className={`badge 
+                      className={`badge btn w-full
                         ${booking.status ==='Pending' && 'bg-yellow-400'}
                         ${booking.status ==='in review' && 'bg-green-400'}
                         `}
