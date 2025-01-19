@@ -20,10 +20,11 @@ import TourGuideProfile from "../pages/BasicLayout/TourGuideProfile/TourGuidePro
 import PrivateRoutes from "./PrivateRoutes";
 import JoinAsTourGuide from "../pages/Dashboard/TouristDashboard/JoinAsTourGuide/JoinAsTourGuide";
 import Payment from "../pages/Dashboard/TouristDashboard/MyBookings/Payment/Payment";
-import AddStories from "../pages/Dashboard/TouristDashboard/AddStories/AddStories";
-import ManageStories from "../pages/Dashboard/TouristDashboard/ManageStories/ManageStories";
-import EditStory from "../pages/Dashboard/TouristDashboard/ManageStories/EditStory";
 import MyAssignedTours from "../pages/Dashboard/TouristGuideDashboard/MyAssignedTours/MyAssignedTours";
+import AddStories from "../pages/Dashboard/commonInDashboard/AddStories/AddStories";
+import ManageStories from "../pages/Dashboard/commonInDashboard/ManageStories/ManageStories";
+import EditStory from "../pages/Dashboard/commonInDashboard/ManageStories/EditStory";
+import AddPackage from "../pages/Dashboard/AdminDashboard/AddPackage/AddPackage";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,7 @@ const router = createBrowserRouter([
             index:true,
             element: <PrivateRoutes><ManageProfile></ManageProfile></PrivateRoutes>
           },
+
           // ----------------------------------------------------------------------------------------------------------------------------------------
           // Tourist only dashboard
           {
@@ -116,7 +118,7 @@ const router = createBrowserRouter([
             children:[
               {
                 path:'/dashboard/touristGuideDashboard/myAssignedTours',
-                element:<MyAssignedTours></MyAssignedTours>
+                element:<PrivateRoutes><MyAssignedTours></MyAssignedTours></PrivateRoutes>
               }
             ]
           },
@@ -124,8 +126,13 @@ const router = createBrowserRouter([
           // Admins only dashboard
           {
             path: '/dashboard/adminDashboard',
-            element: <AdminDashboard></AdminDashboard>,
+            element: <PrivateRoutes><AdminDashboard></AdminDashboard></PrivateRoutes>,
             children:[
+              {
+                path:'/dashboard/adminDashboard/addPackage',
+                element: <PrivateRoutes><AddPackage></AddPackage></PrivateRoutes>
+              }
+              ,
               {
                 path: '/dashboard/adminDashboard/manageUsers',
                 element: <ManageUsers></ManageUsers>

@@ -8,7 +8,7 @@ const Dashboard = () => {
       <nav className="flex lg:hidden">
         <DashboardNavbar></DashboardNavbar>
       </nav>
-      <div className="max-w-[1920px] mx-auto flex">
+      <div  className="max-w-[1920px] mx-auto flex">
         <aside>
           <Drawer></Drawer>
         </aside>

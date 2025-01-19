@@ -6,11 +6,14 @@ import Button from "../../../../components/Button/Button";
 import toast from "react-hot-toast";
 import axios from "axios";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import AdminStats from "./AdminStats/AdminStats";
+import useAdmin from "../../../../hooks/useAdmin";
 
 const ManageProfile = () => {
   const [showModal, setShowModal] = useState(false);
   const [userInfo] = useUserInfo();
   const [uploading, setUploading] = useState(false);
+  const [isAdmin] = useAdmin();
   const [uploadedImageURL, setUploadedImageURL] = useState(
     userInfo?.photoURL || ""
   ); // Use state for better management
@@ -33,8 +36,6 @@ const ManageProfile = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -92,36 +93,41 @@ const ManageProfile = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full py-10 px-5 justify-center h-full lg:min-h-screen text-white">
-      <div className="text-center">
-        <img
-          src={userInfo?.photoURL}
-          // Use updated image URL
+    <div className="flex flex-col items-center w-full  py-10 px-5 justify-center h-full lg:min-h-screen text-white">
+      
+      <div>
+        <div className="text-center">
+          <img
+            src={userInfo?.photoURL}
+            // Use updated image URL
 
-          alt="Profile"
-          className="w-24 h-24 object-cover rounded-full mx-auto mb-4"
-        />
-        <h1 className="text-2xl font-semibold text-primary-color">
-          Welcome, {userInfo?.name}
-        </h1>
-        <p className="text-gray-400 text-xs sm:text-sm md:text-base">
-          Created At: {formattedDate}
-        </p>
-        <p className="text-primary-color text-xs sm:text-sm md:text-base">
-          Email: {userInfo?.email}
-        </p>
-        <p className="mt-2 text-xs sm:text-sm md:text-base">
-          <span className="bg-blue-600 px-3 py-1 rounded-full">
-            Role: {userInfo?.role}
-          </span>
-        </p>
-        <div className="mt-4 space-x-4 space-y-4">
-          <Button text="Edit Profile" onClick={handleEditProfile}></Button>
-          <Link to={'/dashboard/touristDashboard/joinAsTourGuide'}>
-          <Button
-            text="Apply for Tour Guide"
-          ></Button></Link>
+            alt="Profile"
+            className="w-24 h-24 object-cover rounded-full mx-auto mb-4"
+          />
+          <h1 className="text-2xl font-semibold text-primary-color">
+            Welcome, {userInfo?.name}
+          </h1>
+          <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+            Created At: {formattedDate}
+          </p>
+          <p className="text-primary-color text-xs sm:text-sm md:text-base">
+            Email: {userInfo?.email}
+          </p>
+          <p className="mt-2 text-xs sm:text-sm md:text-base">
+            <span className="bg-blue-600 px-3 py-1 rounded-full">
+              Role: {userInfo?.role}
+            </span>
+          </p>
+          <div className="mt-4 space-x-4 space-y-4">
+            <Button text="Edit Profile" onClick={handleEditProfile}></Button>
+            <Link to={"/dashboard/touristDashboard/joinAsTourGuide"}>
+              <Button text="Apply for Tour Guide"></Button>
+            </Link>
+          </div>
         </div>
+      </div>
+      <div>
+        {isAdmin && <AdminStats></AdminStats>}
       </div>
 
       {showModal && (

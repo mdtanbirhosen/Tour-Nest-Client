@@ -10,10 +10,12 @@ const Drawer = () => {
       <li><Link to={"/dashboard/touristDashboard/myBookings"}>My Bookings</Link></li>
       <li><Link to={"/dashboard/touristDashboard/addStories"}>Add Stories</Link></li>
       <li><Link to={"/dashboard/touristDashboard/manageStories"}>Manage Stories</Link></li>
-      <li><Link to={"/dashboard/touristDashboard/joinAsTourGuide"}>Join as tour guide</Link></li>
-      {/* tourist guides only routes */}
+      <li><Link to={"/dashboard/touristDashboard/joinAsTourGuide"}>Join as Tour Guide</Link></li>
+      {/* tourist guides only routes ----------------------------------------------------------*/}
       <div className="divider text-red-600 font-extrabold">tourist guide only</div>
       <li><Link to={"/dashboard/touristGuideDashboard/myAssignedTours"}>My Assigned Tours</Link></li>
+      {/* admins only routed --------------------------------------------------------------------- */}
+      <li><Link to={"/dashboard/adminDashboard/addPackage"}>Add Package</Link></li>
 
       {/* basic links */}
       <div className="divider"></div>
