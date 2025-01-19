@@ -13,6 +13,7 @@ const StoryCard = ({ story={} }) => {
       navigate("/login");
     }
   };
+  console.table(story.images)
   return (
     <div
       style={{

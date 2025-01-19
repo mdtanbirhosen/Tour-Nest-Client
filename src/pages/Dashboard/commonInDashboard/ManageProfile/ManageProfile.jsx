@@ -8,14 +8,16 @@ import axios from "axios";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import AdminStats from "./AdminStats/AdminStats";
 import useAdmin from "../../../../hooks/useAdmin";
+import useAuth from "../../../../hooks/useAuth";
 
 const ManageProfile = () => {
   const [showModal, setShowModal] = useState(false);
   const [userInfo] = useUserInfo();
+  const { user } = useAuth();
   const [uploading, setUploading] = useState(false);
   const [isAdmin] = useAdmin();
   const [uploadedImageURL, setUploadedImageURL] = useState(
-    userInfo?.photoURL || ""
+    userInfo?.photoURL || user.photoURL
   ); // Use state for better management
   const axiosSecure = useAxiosSecure();
 
@@ -42,6 +44,9 @@ const ManageProfile = () => {
     const formData = new FormData(event.target);
     const name = formData.get("name");
     const image = formData.get("image");
+    const bio = formData.get("bio");
+    const experience = formData.get("experience");
+    const ratings = formData.get("ratings");
 
     // If a new image is selected, upload it
     if (image && image.size > 0) {
@@ -68,6 +73,9 @@ const ManageProfile = () => {
 
     const updatedUserInfo = {
       name,
+      bio,
+      experience,
+      ratings,
       email: userInfo?.email,
       role: userInfo?.role,
       photoURL: uploadedImageURL,
@@ -94,7 +102,6 @@ const ManageProfile = () => {
 
   return (
     <div className="flex flex-col items-center w-full  py-10 px-5 justify-center h-full lg:min-h-screen text-white">
-      
       <div>
         <div className="text-center">
           <img
@@ -113,6 +120,15 @@ const ManageProfile = () => {
           <p className="text-primary-color text-xs sm:text-sm md:text-base">
             Email: {userInfo?.email}
           </p>
+          <p className="text-primary-color text-xs sm:text-sm md:text-base">
+            Bio: {userInfo?.bio}
+          </p>
+          <p className="text-primary-color text-xs sm:text-sm md:text-base">
+            Experience: {userInfo?.experience}
+          </p>
+          <p className="text-primary-color text-xs sm:text-sm md:text-base">
+            Ratings: {userInfo?.ratings}
+          </p>
           <p className="mt-2 text-xs sm:text-sm md:text-base">
             <span className="bg-blue-600 px-3 py-1 rounded-full">
               Role: {userInfo?.role}
@@ -126,9 +142,7 @@ const ManageProfile = () => {
           </div>
         </div>
       </div>
-      <div>
-        {isAdmin && <AdminStats></AdminStats>}
-      </div>
+      <div>{isAdmin && <AdminStats></AdminStats>}</div>
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -153,6 +167,33 @@ const ManageProfile = () => {
                   defaultValue={userInfo?.email}
                   className="border p-2 w-full rounded bg-gray-100"
                   readOnly
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">BIO</label>
+                <input
+                  type="text"
+                  name="bio"
+                  defaultValue={userInfo?.bio}
+                  className="border p-2 w-full rounded bg-gray-100"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">Experience</label>
+                <input
+                  type="text"
+                  name="experience"
+                  defaultValue={userInfo?.experience}
+                  className="border p-2 w-full rounded bg-gray-100"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">Ratings</label>
+                <input
+                  type="text"
+                  name="ratings"
+                  defaultValue={userInfo?.ratings}
+                  className="border p-2 w-full rounded bg-gray-100"
                 />
               </div>
               <div className="mb-4">

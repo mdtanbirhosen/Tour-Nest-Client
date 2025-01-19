@@ -54,12 +54,12 @@ const router = createBrowserRouter([
           {
             path:'/packageDetails/:id',
             element:<PackageDetails></PackageDetails>,
-            loader: ({params})=> fetch(`http://localhost:5000/package/${params.id}`)
+            loader: ({params})=> fetch(`https://tour-nest-server-side.vercel.app/package/${params.id}`)
           },
           {
             path:'/tourGuideProfile/:id',
             element: <TourGuideProfile></TourGuideProfile>,
-            loader: ({params})=> fetch(`http://localhost:5000/tourGuideProfile/${params.id}`)
+            loader: ({params})=> fetch(`https://tour-nest-server-side.vercel.app/tourGuideProfile/${params.id}`)
 
           }
           
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
               {
                 path: '/dashboard/touristDashboard/payment/:id',
                 element: <PrivateRoutes><Payment></Payment></PrivateRoutes>,
-                loader: ({params})=> fetch(`http://localhost:5000/booking/${params.id}`)
+                loader: ({params})=> fetch(`https://tour-nest-server-side.vercel.app/booking/${params.id}`)
               },
               {
                 path: '/dashboard/touristDashboard/joinAsTourGuide',

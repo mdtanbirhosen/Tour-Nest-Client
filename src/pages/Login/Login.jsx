@@ -1,14 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import GoogleSignIn from "../../components/GoogleSignIn/GoogleSignIn";
-import signInAnimation from '../../assets/signInAnimation.json'
+import signInAnimation from "../../assets/signInAnimation.json";
 import Lottie from "lottie-react";
 
 const Login = () => {
   const { signIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,7 +19,7 @@ const Login = () => {
         console.log(result);
         form.email.value = "";
         form.password.value = "";
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state?.from?.pathname ? location?.state?.from?.pathname : "/");
       })
       .catch((error) => {
         console.log(error);
@@ -96,10 +95,7 @@ const Login = () => {
           {/* Register Link */}
           <p className="text-center mt-4 md:mt-5 text-sm md:text-base">
             Don’t have an account?{" "}
-            <Link
-              to="/register"
-              className="text-red-500 hover:underline"
-            >
+            <Link to="/register" className="text-red-500 hover:underline">
               Register
             </Link>
           </p>

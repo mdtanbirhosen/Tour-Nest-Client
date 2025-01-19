@@ -32,7 +32,7 @@ const TouristStory = () => {
         </button>
         <button
           className="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600"
-          onClick={() => navigate("/addStories")}
+          onClick={() => navigate("/dashboard/touristDashboard/addStories")}
         >
           Add Stories
         </button>

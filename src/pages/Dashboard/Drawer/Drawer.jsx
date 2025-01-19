@@ -15,8 +15,11 @@ const Drawer = () => {
       <div className="divider text-red-600 font-extrabold">tourist guide only</div>
       <li><Link to={"/dashboard/touristGuideDashboard/myAssignedTours"}>My Assigned Tours</Link></li>
       {/* admins only routed --------------------------------------------------------------------- */}
+
+      <div className="divider text-red-600 font-extrabold">admin only</div>
       <li><Link to={"/dashboard/adminDashboard/addPackage"}>Add Package</Link></li>
       <li><Link to={"/dashboard/adminDashboard/manageUsers"}>Manage Users</Link></li>
+      <li><Link to={"/dashboard/adminDashboard/manageCandidates"}>Manage Candidates</Link></li>
 
       {/* basic links */}
       <div className="divider"></div>
