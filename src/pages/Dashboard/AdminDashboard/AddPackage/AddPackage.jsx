@@ -1,21 +1,45 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const AddPackage = () => {
   const [packageData, setPackageData] = useState({
     name: "",
     description: "",
-    images: ["", "", ""],
+    images: [], // Store the uploaded image URLs
     tourType: "",
     price: "",
     days: "",
     tourPlan: ["", ""],
   });
 
+  const [imageFiles, setImageFiles] = useState([]); // To store the selected image files
   const axiosSecure = useAxiosSecure();
-  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic()
+
+  const uploadToImgBB = async (imageFile) => {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    try {
+      const response = await axiosPublic.post(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_image_hosting_key
+        }`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response.data.data.url; 
+    } catch (error) {
+      console.error("Error uploading to ImgBB:", error);
+      throw new Error("Failed to upload image");
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,13 +49,9 @@ const AddPackage = () => {
     }));
   };
 
-  const handleImageChange = (index, value) => {
-    const updatedImages = [...packageData.images];
-    updatedImages[index] = value;
-    setPackageData((prev) => ({
-      ...prev,
-      images: updatedImages,
-    }));
+  const handleImageFileChange = (e) => {
+    const files = Array.from(e.target.files).slice(0, 3); // Limit to a maximum of 3 files
+    setImageFiles(files);
   };
 
   const handleTourPlanChange = (index, value) => {
@@ -46,21 +66,27 @@ const AddPackage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Add metadata
-    const finalData = {
-      ...packageData,
-      price: parseFloat(packageData.price),
-      days: parseInt(packageData.days, 10),
-      createdBy: "admin@gmail.com", // Example admin email
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-
     try {
-      const response = await axiosSecure.post("/packages", finalData);
+      // Upload images to ImgBB and get their URLs
+      const uploadedImages = await Promise.all(
+        imageFiles.map((file) => uploadToImgBB(file))
+      );
+
+      // Prepare package data
+      const finalData = {
+        ...packageData,
+        images: uploadedImages,
+        price: parseFloat(packageData.price),
+        days: parseInt(packageData.days, 10),
+        createdBy: "admin@gmail.com", // Example admin email
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+
+      // Send package data to the server
+      const response = await axiosSecure.post("/package", finalData);
       if (response.data.insertedId) {
         toast.success("Package added successfully!");
-        navigate("/admin/packages"); // Redirect to packages list
       }
     } catch (error) {
       console.error(error);
@@ -99,20 +125,19 @@ const AddPackage = () => {
           ></textarea>
         </div>
 
-        {/* Images */}
+        {/* Image Upload */}
         <div>
-          <label className="block font-semibold mb-2">Image URLs (3)</label>
-          {packageData.images.map((image, index) => (
-            <input
-              key={index}
-              type="text"
-              value={image}
-              onChange={(e) => handleImageChange(index, e.target.value)}
-              placeholder={`Image URL ${index + 1}`}
-              className="input input-bordered w-full mb-2"
-              required
-            />
-          ))}
+          <label className="block font-semibold mb-2">
+            Upload Images (Up to 3)
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleImageFileChange}
+            className="file-input file-input-bordered w-full"
+            required
+          />
         </div>
 
         {/* Tour Type */}

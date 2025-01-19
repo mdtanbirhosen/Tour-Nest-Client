@@ -16,6 +16,7 @@ const Drawer = () => {
       <li><Link to={"/dashboard/touristGuideDashboard/myAssignedTours"}>My Assigned Tours</Link></li>
       {/* admins only routed --------------------------------------------------------------------- */}
       <li><Link to={"/dashboard/adminDashboard/addPackage"}>Add Package</Link></li>
+      <li><Link to={"/dashboard/adminDashboard/manageUsers"}>Manage Users</Link></li>
 
       {/* basic links */}
       <div className="divider"></div>
