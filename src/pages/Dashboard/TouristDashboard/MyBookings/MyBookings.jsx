@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -12,6 +13,9 @@ const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
+  const [currentPage, setCurrentPage] = useState(1); // Current page state
+  const itemsPerPage = 5; // Number of items per page
 
   // Fetch bookings with TanStack Query
   const { data: bookings = [], isLoading } = useQuery({
@@ -67,6 +71,17 @@ const MyBookings = () => {
     navigate(`/dashboard/touristDashboard/payment/${bookingId}`);
   };
 
+  // Pagination logic
+  const totalItems = bookings.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = bookings.slice(startIndex, endIndex);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   if (isLoading) {
     return <InternalLoading />;
   }
@@ -77,59 +92,97 @@ const MyBookings = () => {
       {bookings.length === 0 ? (
         <p className="text-center text-gray-500">No bookings found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="table w-full">
-            {/* Table Head */}
-            <thead>
-              <tr>
-                <th className="bg-primary text-white">Package Name</th>
-                <th className="bg-primary text-white">Tour Guide</th>
-                <th className="bg-primary text-white">Tour Date</th>
-                <th className="bg-primary text-white">Price</th>
-                <th className="bg-primary text-white">Status</th>
-                <th className="bg-primary text-white">Actions</th>
-              </tr>
-            </thead>
-            {/* Table Body */}
-            <tbody>
-              {bookings.map((booking) => (
-                <tr key={booking._id} className="hover:bg-gray-100">
-                  <td>{booking.packageName}</td>
-                  <td>{booking?.guideDetails?.name}</td>
-                  <td>{new Date(booking.tourDate).toLocaleDateString()}</td>
-                  <td>${booking.price}</td>
-                  <td>
-                    <span
-                      className={`badge btn w-full
-                        ${booking.status ==='Pending' && 'bg-yellow-400'}
-                        ${booking.status ==='in review' && 'bg-green-400'}
-                        `}
-                    >
-                      {booking.status}
-                    </span>
-                  </td>
-                  <td>
-                    {booking.status === "Pending" && (
-                      <div className="flex space-x-2">
-                        <Button
-                        text="Pay"
-                          onClick={() => handlePayBooking(booking._id)}>
-                          
-                        </Button>
-                        <Button
-                        text="Cancel"
-                          onClick={() => handleCancelBooking(booking._id)}
-                          className="bg-red-500 hover:bg-red-300"
-                        >
-                          
-                        </Button>
-                      </div>
-                    )}
-                  </td>
+        <div>
+          <div className="overflow-x-auto">
+            <table className="table w-full">
+              {/* Table Head */}
+              <thead>
+                <tr>
+                  <th className="bg-primary text-white">Package Name</th>
+                  <th className="bg-primary text-white">Tour Guide</th>
+                  <th className="bg-primary text-white">Tour Date</th>
+                  <th className="bg-primary text-white">Price</th>
+                  <th className="bg-primary text-white">Status</th>
+                  <th className="bg-primary text-white">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              {/* Table Body */}
+              <tbody>
+                {currentData.map((booking) => (
+                  <tr key={booking._id} className="hover:bg-gray-100">
+                    <td>{booking.packageName}</td>
+                    <td>{booking?.guideDetails?.name}</td>
+                    <td>{new Date(booking.tourDate).toLocaleDateString()}</td>
+                    <td>${booking.price}</td>
+                    <td>
+                      <span
+                        className={`badge btn w-full
+                          ${booking.status === "Pending" && "bg-yellow-400"}
+                          ${booking.status === "in review" && "bg-green-400"}
+                        `}
+                      >
+                        {booking.status}
+                      </span>
+                    </td>
+                    <td>
+                      {booking.status === "Pending" && (
+                        <div className="flex space-x-2">
+                          <Button
+                            text="Pay"
+                            onClick={() => handlePayBooking(booking._id)}
+                          />
+                          <Button
+                            text="Cancel"
+                            onClick={() => handleCancelBooking(booking._id)}
+                            className="bg-red-500 hover:bg-red-300"
+                          />
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex justify-between items-center mt-4">
+              <span>
+                Showing {startIndex + 1} - {Math.min(endIndex, totalItems)} of{" "}
+                {totalItems}
+              </span>
+              <div className="flex space-x-2">
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50"
+                >
+                  Previous
+                </button>
+                {Array.from({ length: totalPages }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handlePageChange(index + 1)}
+                    className={`px-3 py-1 rounded ${
+                      currentPage === index + 1
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200 hover:bg-gray-300"
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+                <button
+                  disabled={currentPage === totalPages}
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

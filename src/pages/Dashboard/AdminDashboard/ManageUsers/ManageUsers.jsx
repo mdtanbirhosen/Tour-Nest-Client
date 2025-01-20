@@ -7,6 +7,8 @@ import InternalLoading from "../../../../components/Loading/InternalLoading";
 const ManageUsers = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Search input state
   const [selectedRole, setSelectedRole] = useState(""); // Role filter state
+  const [currentPage, setCurrentPage] = useState(1); // Pagination state
+  const itemsPerPage = 10; // Number of users per page
   const axiosPublic = useAxiosPublic();
 
   // Fetch users using TanStack Query
@@ -26,7 +28,7 @@ const ManageUsers = () => {
     enabled: false, // Disable automatic fetching
   });
 
-  // Refetch users when searchQuery or selectedRole changes
+  // Refetch users when searchQuery, selectedRole, or pagination state changes
   useEffect(() => {
     refetch();
   }, [searchQuery, selectedRole, refetch]);
@@ -40,6 +42,17 @@ const ManageUsers = () => {
   const handleRoleChange = (selectedOption) => {
     const value = selectedOption ? selectedOption.value : "";
     setSelectedRole(value);
+  };
+
+  // Pagination calculations
+  const totalItems = users.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = users.slice(startIndex, endIndex);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   const roleOptions = [
@@ -91,10 +104,10 @@ const ManageUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {users.length > 0 ? (
-                users.map((user, index) => (
+              {currentData.length > 0 ? (
+                currentData.map((user, index) => (
                   <tr key={user._id}>
-                    <td>{index + 1}</td>
+                    <td>{startIndex + index + 1}</td>
                     <td>{user.name || "N/A"}</td>
                     <td>{user.email}</td>
                     <td>{user.role || "Tourist"}</td>
@@ -109,6 +122,45 @@ const ManageUsers = () => {
               )}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* Pagination Footer */}
+      {totalPages > 1 && (
+        <div className="flex justify-between items-center mt-4">
+          <span>
+            Showing {startIndex + 1} - {Math.min(endIndex, totalItems)} of{" "}
+            {totalItems}
+          </span>
+          <div className="flex space-x-2">
+            <button
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+              className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50"
+            >
+              Previous
+            </button>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+                className={`px-3 py-1 rounded ${
+                  currentPage === index + 1
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+              className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
     </div>

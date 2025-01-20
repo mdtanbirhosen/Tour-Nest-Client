@@ -3,14 +3,14 @@ import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
 const TourGuideCard = ({ tourGuide }) => {
-  const { image, name, bio, ratings, _id } = tourGuide;
+  const { photoURL, name, bio, ratings, _id } = tourGuide;
 
 
   return (
     <div className="card card-side bg-base-100 shadow-xl flex-col sm:flex-row rounded-2xl">
       <figure>
         <img
-          src={image}
+          src={photoURL}
           className="h-[300px] sm:h-[200px] w-full sm:w-[150px] object-cover rounded-r-2xl  sm:rounded-r-none"
           alt="Movie"
         />
