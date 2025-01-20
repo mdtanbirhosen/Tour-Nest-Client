@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Drawer from "../pages/Dashboard/Drawer/Drawer";
 import DashboardNavbar from "../components/DashboardNavbar/DashboardNavbar";
+import Footer from "../components/Footer/Footer";
 
 const Dashboard = () => {
   return (
@@ -17,6 +18,9 @@ const Dashboard = () => {
           
         </main>
       </div>
+      <footer className="*:bg-basic-bg max-w-[1920px] bg-dashboard-bg mx-auto py-10 px-2 md:px-5">
+        <Footer></Footer>
+      </footer>
     </div>
   );
 };
