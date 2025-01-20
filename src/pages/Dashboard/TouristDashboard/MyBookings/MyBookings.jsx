@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -7,6 +7,8 @@ import useUserInfo from "../../../../hooks/useUserInfo";
 import Swal from "sweetalert2";
 import InternalLoading from "../../../../components/Loading/InternalLoading";
 import Button from "../../../../components/Button/Button";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 const MyBookings = () => {
   const [userInfo] = useUserInfo();
@@ -16,6 +18,8 @@ const MyBookings = () => {
 
   const [currentPage, setCurrentPage] = useState(1); // Current page state
   const itemsPerPage = 5; // Number of items per page
+  const [showConfetti, setShowConfetti] = useState(false); // State for confetti
+  const { width, height } = useWindowSize(); // Get window dimensions
 
   // Fetch bookings with TanStack Query
   const { data: bookings = [], isLoading } = useQuery({
@@ -82,17 +86,46 @@ const MyBookings = () => {
     setCurrentPage(pageNumber);
   };
 
+  useEffect(() => {
+    if (bookings.length > 3) {
+      setShowConfetti(true);
+    }
+  }, [bookings]);
+
+  const handleApplyDiscount = () => {
+    toast.success("Discount applied to your next booking!");
+    setShowConfetti(false); // Hide confetti after applying the discount
+  };
+
   if (isLoading) {
     return <InternalLoading />;
   }
 
   return (
-    <div className="p-6">
+    <div className="p-2 md:p-6">
+      {showConfetti && <Confetti width={width} height={height} />}
       <h2 className="text-2xl font-semibold text-center mb-6">My Bookings</h2>
       {bookings.length === 0 ? (
         <p className="text-center text-gray-500">No bookings found.</p>
       ) : (
         <div>
+          {bookings.length > 3 && (
+            <div className="p-4 mb-6 bg-green-100 rounded-lg text-center shadow-lg">
+              <h3 className="text-lg font-bold text-green-800">
+                🎉 Congratulations! 🎉
+              </h3>
+              <p className="text-green-700">
+                You&apos;ve booked more than 3 times! You’re eligible for a special
+                discount on your next booking.
+              </p>
+              <Button
+                text="Apply Discount"
+                onClick={handleApplyDiscount}
+                className="mt-4 bg-green-600 text-white hover:bg-green-500"
+              />
+            </div>
+          )}
+
           <div className="overflow-x-auto">
             <table className="table w-full">
               {/* Table Head */}

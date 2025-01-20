@@ -6,6 +6,7 @@ import useAuth from "../../../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import Title from "../../../../../components/Title/Title";
 
 const CheckOutFrom = ({ price, bookingInfo}) => {
     const {user} = useAuth();
@@ -83,8 +84,13 @@ const CheckOutFrom = ({ price, bookingInfo}) => {
         }
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit} className="w-full text-green-500">
+        <div className="p-2 md:p-10">
+            <Title title="Payment"></Title>
+            <form onSubmit={handleSubmit} className="max-w-screen-sm mx-auto">
+            {/* info */}
+            <div className="mb-5">
+                <h4>Name: {user.displayName}</h4>
+            </div>
                 <CardElement
                     options={{
                         style: {
@@ -101,7 +107,7 @@ const CheckOutFrom = ({ price, bookingInfo}) => {
                         },
                     }}
                 />
-                <button className="btn btn-sm btn-success" type="submit" disabled={!stripe || !clientSecret}>
+                <button className="btn btn-sm bg-primary-color mt-5 text-white hover:bg-secondary-color btn-success" type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>

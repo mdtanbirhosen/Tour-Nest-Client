@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const TouristDashboard = () => {
     return (
-        <div>
+        <div className="">
             <Outlet></Outlet>
         </div>
     );

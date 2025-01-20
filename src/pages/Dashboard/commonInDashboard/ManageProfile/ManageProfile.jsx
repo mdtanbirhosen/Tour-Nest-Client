@@ -9,6 +9,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import AdminStats from "./AdminStats/AdminStats";
 import useAdmin from "../../../../hooks/useAdmin";
 import useAuth from "../../../../hooks/useAuth";
+import useTourGuide from "../../../../hooks/useTourGuide";
 
 const ManageProfile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,6 +17,7 @@ const ManageProfile = () => {
   const { user } = useAuth();
   const [uploading, setUploading] = useState(false);
   const [isAdmin] = useAdmin();
+  const [isTourGuide] = useTourGuide();
   const [uploadedImageURL, setUploadedImageURL] = useState(
     userInfo?.photoURL || user.photoURL
   ); // Use state for better management
@@ -136,9 +138,11 @@ const ManageProfile = () => {
           </p>
           <div className="mt-4 space-x-4 space-y-4">
             <Button text="Edit Profile" onClick={handleEditProfile}></Button>
-            <Link to={"/dashboard/touristDashboard/joinAsTourGuide"}>
-              <Button text="Apply for Tour Guide"></Button>
-            </Link>
+            {!isAdmin && !isTourGuide && (
+              <Link to={"/dashboard/touristDashboard/joinAsTourGuide"}>
+                <Button text="Apply for Tour Guide"></Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

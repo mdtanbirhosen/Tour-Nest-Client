@@ -9,7 +9,7 @@ const Payment = () => {
   const data = useLoaderData();
   console.log(data);
   return (
-    <div>
+    <div className="">
       <Elements stripe={stripePromise}>
         <CheckoutForm  price={data?.price} bookingInfo={data}></CheckoutForm>
       </Elements>

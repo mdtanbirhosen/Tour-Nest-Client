@@ -11,7 +11,7 @@ const Home = () => {
         <title>HOME || TOUR NEST</title>
       </Helmet>
       {/* over view section  */}
-      <section>
+      <section className="my-10">
         <OverView></OverView>
       </section>
       {/* Tourism and Travel Guide Section*/}
