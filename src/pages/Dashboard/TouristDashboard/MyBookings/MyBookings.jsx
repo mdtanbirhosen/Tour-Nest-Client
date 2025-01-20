@@ -180,7 +180,7 @@ const MyBookings = () => {
 
           {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex justify-between items-center flex-col md:flex-row mt-4">
               <span>
                 Showing {startIndex + 1} - {Math.min(endIndex, totalItems)} of{" "}
                 {totalItems}
