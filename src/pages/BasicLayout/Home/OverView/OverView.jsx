@@ -2,32 +2,64 @@ import ReactPlayer from "react-player";
 import Title from "../../../../components/Title/Title";
 import Button from "../../../../components/Button/Button";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
 
 const OverView = () => {
+  // React-Spring hover effect for buttons
+ 
+
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }} // Starting state
+      animate={{ opacity: 1, y: 0 }} // Animate to visible state
+      transition={{ duration: 0.8, ease: "easeOut" }} // Animation timing
+      className="p-6 bg-white rounded-lg shadow-lg text-center"
+    >
       <Title
         title="Discover the World with TOUR NEST"
         subTitle="Explore Bangladesh's beauty and culture with our all-in-one platform designed to make your travel plans easier, more exciting, and unforgettable."
       ></Title>
-      
-    
+
       <div className="flex justify-center">
-        <ReactPlayer
-          url="https://www.youtube.com/embed/TUMoDxI0xeU?si=5oG-kdJfhEj96oad&amp;clip=UgkxPB_3DkgfzD4X7tRxxf__WJBuqWGuOLPw&amp;clipt=EO3kKBjN4yo"
-          controls
-          width="100%"
-          height="400px"
-          className="rounded-lg shadow-lg"
-        />
+        
+          <ReactPlayer
+            url="https://www.youtube.com/embed/TUMoDxI0xeU?si=5oG-kdJfhEj96oad&amp;clip=UgkxPB_3DkgfzD4X7tRxxf__WJBuqWGuOLPw&amp;clipt=EO3kKBjN4yo"
+            controls
+            width="100%"
+            height="400px"
+            className="rounded-lg shadow-lg"
+          />
+        
       </div>
-      <div className="mt-6 space-x-4">
-        <Link to={"/trips"}>
-          <Button text="Explore Packages"></Button>
-        </Link>
-        <Button text="Watch Full Video"></Button>
+      <div className="mt-6 space-x-4 flex justify-center">
+        <motion.div
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Link to={"/trips"}>
+            
+              <Button text="Explore Packages"></Button>
+            
+          </Link>
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+        >
+          
+            <Button text="Watch Full Video"></Button>
+          
+        </motion.div>
       </div>
-      <div className="mt-8">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="mt-8"
+      >
         <div className="collapse bg-base-200">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">
@@ -89,8 +121,8 @@ const OverView = () => {
             </ul>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

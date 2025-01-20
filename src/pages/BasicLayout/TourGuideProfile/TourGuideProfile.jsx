@@ -7,7 +7,7 @@ import StoryCard from "../../../components/StoryCard/StoryCard";
 
 const TourGuideProfile = () => {
   const tourGuideInfo = useLoaderData();
-  const { name, email, bio, experience, image, ratings } = tourGuideInfo;
+  const { name, email, bio, experience, photoURL, ratings } = tourGuideInfo;
   const axiosPublic = useAxiosPublic();
 
   const { data: specificStories = [] } = useQuery({
@@ -34,7 +34,7 @@ const TourGuideProfile = () => {
             <figure className=" lg:w-1/2">
               <img
                 className="h-full w-full object-cover"
-                src={image}
+                src={photoURL}
                 alt="Album"
               />
             </figure>

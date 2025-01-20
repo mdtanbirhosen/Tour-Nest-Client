@@ -1,12 +1,19 @@
 import PropTypes from "prop-types";
-
+import { useSpring, animated } from "react-spring";
 const Button = ({
   text,
   onClick = () => {},
   className = "",
   type = "button",
 }) => {
+  const buttonSpringStyle = useSpring({
+  from: { transform: "scale(1)" },
+  to: { transform: "scale(1.05)" },
+  config: { tension: 200, friction: 10 },
+  reset: true,
+});
   return (
+    <animated.div style={buttonSpringStyle}>
     <button
       type={type}
       onClick={onClick}
@@ -14,6 +21,7 @@ const Button = ({
     >
       {text}
     </button>
+    </animated.div>
   );
 };
 
@@ -25,3 +33,9 @@ Button.propTypes = {
 };
 
 export default Button;
+
+
+
+
+//               <Button text="Explore Packages"></Button>
+//             
