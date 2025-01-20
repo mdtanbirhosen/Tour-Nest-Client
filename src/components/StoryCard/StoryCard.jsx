@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { FacebookShareButton, FacebookIcon } from "react-share";
 import { toast } from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const StoryCard = ({ story={} }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -40,13 +40,18 @@ const StoryCard = ({ story={} }) => {
             <p className="mr-2">
               <strong>Share With:</strong>
             </p>
-            <FacebookShareButton
+            {user?<FacebookShareButton
               url={"https://www.facebook.com/"}
               quote={story?.title}
               onClick={() => handleShare(story?.url)}
             >
               <FacebookIcon size={32} round />
-            </FacebookShareButton>
+            </FacebookShareButton>:
+            
+              <Link to={'/login'}>
+                <FacebookIcon size={32} round />
+              </Link>
+            }
           </div>
         </div>
       </div>
