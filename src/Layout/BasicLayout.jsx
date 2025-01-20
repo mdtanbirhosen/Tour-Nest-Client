@@ -16,7 +16,7 @@ const BasicLayout = () => {
       <main className="max-w-screen-2xl mx-auto min-h-[calc(100vh-200px)] px-2 md:px-5">
         <Outlet></Outlet>
       </main>
-      <footer>
+      <footer className="py-10 px-2 text-center md:text-left">
         <Footer></Footer>
       </footer>
     </div>

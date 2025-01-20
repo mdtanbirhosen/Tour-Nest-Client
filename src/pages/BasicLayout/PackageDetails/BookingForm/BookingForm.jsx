@@ -5,35 +5,32 @@ import useAllTourGuide from "../../../../hooks/useAllTourGuide";
 import PropTypes from "prop-types";
 import useAuth from "../../../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../../../components/Button/Button";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import toast from 'react-hot-toast'
-import Swal from 'sweetalert2'
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 const BookingForm = ({ packageInfo }) => {
-
   const [tourDate, setTourDate] = useState(null);
   const [selectedGuide, setSelectedGuide] = useState("");
   const [allTourGuide] = useAllTourGuide();
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  const navigate = useNavigate()
-
-
+  const navigate = useNavigate();
 
   const { user } = useAuth();
   const price = 299; // Static Price
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!tourDate || !selectedGuide) {
       toast.error("Please select a tour date and guide.");
       return;
     }
-// get single data of tour guide using id 
-    const {data:tourGuide} = await axiosPublic(`/tourGuideProfile/${selectedGuide}`)
-    
+    // get single data of tour guide using id
+    const { data: tourGuide } = await axiosPublic(
+      `/tourGuideProfile/${selectedGuide}`
+    );
 
     const formData = {
       packageId: packageInfo?._id,
@@ -41,16 +38,16 @@ const BookingForm = ({ packageInfo }) => {
       touristName: user?.displayName,
       touristEmail: user?.email,
       tourDate,
-      guideId:selectedGuide,
-      guideDetails:tourGuide,
+      guideId: selectedGuide,
+      guideDetails: tourGuide,
       price,
     };
 
     console.log("Form Data:", formData);
     // Submit form data to your API or handle it accordingly
-    const data = await axiosSecure.post('/bookings',formData)
-    if(data.data.insertedId){
-      console.log('added booking')
+    const data = await axiosSecure.post("/bookings", formData);
+    if (data.data.insertedId) {
+      console.log("added booking");
       Swal.fire({
         icon: "success",
         title: "Booking Success",
@@ -59,8 +56,10 @@ const BookingForm = ({ packageInfo }) => {
         confirmButtonText: "Go to My Bookings",
         cancelButtonText: "Done",
         customClass: {
-          confirmButton: "bg-primary-color hover:bg-secondary-color text-white font-semibold py-2 px-4 rounded",
-          cancelButton: "bg-secondary-color hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded ml-2",
+          confirmButton:
+            "bg-primary-color hover:bg-secondary-color text-white font-semibold py-2 px-4 rounded",
+          cancelButton:
+            "bg-secondary-color hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded ml-2",
         },
         buttonsStyling: false, // Disable default SweetAlert2 button styles
       }).then((result) => {
@@ -68,7 +67,6 @@ const BookingForm = ({ packageInfo }) => {
           navigate("/dashboard/touristDashboard/myBookings");
         }
       });
-      
     }
   };
 
@@ -179,13 +177,25 @@ const BookingForm = ({ packageInfo }) => {
           </div>
         </div>
         {/* Book Now Button */}
-        {user ? (
-          <Button type="submit" text="Book Now"></Button>
-        ) : (
-          <Link to={"/login"}>
-            <Button text="Login to Book"></Button>
-          </Link>
-        )}
+        <div id="goodd">
+          {user ? (
+            <button
+              type="submit"
+              className={`px-4 py-2 rounded-md text-xs md:text-sm lg:text-base text-white bg-primary-color hover:bg-secondary-color transition duration-200 `}
+            >
+              Book Now
+            </button>
+          ) : (
+            <Link to={"/login"}>
+              <button
+                type="submit"
+                className={`px-4 py-2 rounded-md text-xs md:text-sm lg:text-base text-white bg-primary-color hover:bg-secondary-color transition duration-200 `}
+              >
+                Book Now
+              </button>
+            </Link>
+          )}
+        </div>
       </form>
     </div>
   );

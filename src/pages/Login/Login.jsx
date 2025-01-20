@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import GoogleSignIn from "../../components/GoogleSignIn/GoogleSignIn";
 import signInAnimation from "../../assets/signInAnimation.json";
 import Lottie from "lottie-react";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -19,6 +20,7 @@ const Login = () => {
         console.log(result);
         form.email.value = "";
         form.password.value = "";
+        toast.success("Login Successfully.");
         navigate(location?.state?.from?.pathname ? location?.state?.from?.pathname : "/");
       })
       .catch((error) => {
