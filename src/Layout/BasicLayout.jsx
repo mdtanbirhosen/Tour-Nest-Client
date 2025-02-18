@@ -7,7 +7,7 @@ const BasicLayout = () => {
   const {pathname} = useLocation()
   return (
     <div className="bg-basic-bg">
-      <header>
+      <header className="mt-[68px]">
         <Navbar></Navbar>
         {
           pathname ==='/' && <Banner></Banner>
